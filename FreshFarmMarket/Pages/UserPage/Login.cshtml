@@ -1,0 +1,46 @@
+﻿@page
+@using Microsoft.Extensions.Options
+@using FreshFarmMarket.ViewModels
+@inject IOptions<GoogleCaptchaConfig> GoogleCaptchaConfig
+@model FreshFarmMarket.Pages.UserPage.LoginModel
+@{
+	ViewData["Title"] = "Login";
+}
+
+<div class="row justify-content-center align-items-center">
+
+	<div class="col-sm-12 col-md-12 col-lg-4">
+		<h1 class="mb-3">@ViewData["Title"]</h1>
+
+		<form method="post">
+
+			<div class="mb-3">
+				<label class="form-label" asp-for="LModel.Email">Email</label>
+				<input type="Text" asp-for="LModel.Email" class="form-control" />
+				<span asp-validaton-for="LModel.Email" class="text-danger"></span>
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label" asp-for="LModel.Password">Password</label>
+				<input type="password" asp-for="LModel.Password" class="form-control" />
+				<span asp-validaton-for="LModel.Password" class="text-danger"></span>
+			</div>
+
+			<div class="mb-3 form-check">
+				<input type="checkbox" asp-for="LModel.RememberMe" class="form-check-input" />
+				<label class="form-check-label" asp-for="LModel.RememberMe">Remember Me?</label>
+			</div>
+
+			<div class="mb-3">
+				<button type="submit" class="btn btn-primary">Login</button>
+			</div>
+		</form>
+
+		<form method="post" class="d-grid gap-3" asp-page-handler="Google">
+			<button type="submit" class="btn btn-primary">Login by Google</button>
+		</form>
+	</div>
+</div>
+
+
+<script src="https://www.google.com/recaptcha/api.js?render=@GoogleCaptchaConfig.Value.SiteKey"></script>

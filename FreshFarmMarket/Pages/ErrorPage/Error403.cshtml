@@ -1,0 +1,17 @@
+﻿@page
+@model FreshFarmMarket.Pages.ErrorPage.Error403Model
+@{
+}
+
+
+<h2>Error <b>403</b></h2>
+
+<p>Sorry for inform you that there have some issue happened while processing your request</p>
+
+@{
+    if (Model.ShowRequestId)
+    {
+        <b>Request ID: </b> @Model.RequestId
+    }
+
+}

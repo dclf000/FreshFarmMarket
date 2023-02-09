@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "alc0WQ5ZQ03W3v0MekqXs2WtVdfUu9Jtac+ROfq4CvruBM/h/nfU81ekxPPye3n42qETsyPvEdJPMqaejY3gPA==",
+  "dgSpecHash": "ohC7viwfNKbrCS6BEdDb3n4KWbxuc0C0shj5raBqtLELlbv/BqHQZXQ7FqQ4sVBrpvD4sfZHQrrXaxpvx61SYQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\zoyoq\\source\\repos\\FreshFarmMarket\\FreshFarmMarket\\FreshFarmMarket.csproj",
+  "projectFilePath": "C:\\Users\\zoyoq\\OneDrive\\文档\\GitHub\\My_FSDP\\FreshFarmMarket\\FreshFarmMarket\\FreshFarmMarket.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\zoyoq\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\zoyoq\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

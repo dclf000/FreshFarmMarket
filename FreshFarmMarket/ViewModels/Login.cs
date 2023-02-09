@@ -14,7 +14,8 @@ namespace FreshFarmMarket.Models
 
         [Required]
         [DataType(DataType.Password)]
-        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$", ErrorMessage = "Password requires minimum 12 characters,\r\nUse combination of lower-case, upper-case, Numbers and special characters")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$",
+            ErrorMessage = "Password requires minimum 12 characters,\r\nUse combination of lower-case, upper-case, Numbers and special characters")]
         [Compare(nameof(Password), ErrorMessage = "Password and confirmation password does not match")]
         public string ConfirmPassword { get; set; }
 

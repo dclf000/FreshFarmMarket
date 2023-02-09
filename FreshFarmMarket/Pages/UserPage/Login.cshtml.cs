@@ -46,34 +46,39 @@ namespace FreshFarmMarket.Pages.UserPage
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> OnPostInHouse()
+		public async Task<IActionResult> OnPostAsync()
 		{
-			if (!ModelState.IsValid)
+			if (ModelState.IsValid)
 			{
-				Console.WriteLine("Model is INVALID");
-				return Page();
-			}
+                Console.WriteLine("Signing in");
+                var identityResult = await _signInManager.PasswordSignInAsync(LModel.Email, LModel.Password, LModel.RememberMe, true);
+                if (identityResult.Succeeded)
+                {
+                    Console.WriteLine("Success");
 
-			Console.WriteLine("Signing in");
-			var identityResult = await _signInManager.PasswordSignInAsync(LModel.Email, LModel.Password, LModel.RememberMe, true);
-			if (identityResult.Succeeded)
+
+                    _httpContextAccessor.HttpContext.Session.SetString(SessionVariable.UserName, LModel.Email);
+
+                    return RedirectToPage("Index");
+                }
+                else if (identityResult.IsLockedOut)
+                {
+                    ModelState.AddModelError("", "The account is locked out");
+                    return Page();
+                }
+
+                Console.WriteLine("Failed");
+                ModelState.AddModelError(nameof(LModel.Email), "Username or Password is incorrect");
+                return Page();
+			}
+			else
 			{
-				Console.WriteLine("Success");
 
+                Console.WriteLine("Model is INVALID");
+                return Page();
+            }
 
-				_httpContextAccessor.HttpContext.Session.SetString(SessionVariable.UserName, LModel.Email);
-
-				return RedirectToPage("Index");
-			}
-			else if (identityResult.IsLockedOut)
-			{
-				ModelState.AddModelError("", "The account is locked out");
-				return Page();
-			}
-
-			Console.WriteLine("Failed");
-			ModelState.AddModelError(nameof(LModel.Email), "Username or Password is incorrect");
-			return Page();
+			
 		}
 	}
 }

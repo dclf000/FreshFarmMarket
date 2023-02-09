@@ -27,7 +27,7 @@ namespace FreshFarmMarket.Pages.UserPage
       
         public async Task<IActionResult> OnPostDontLogoutAsync()
         {
-            return RedirectToPage("Index");
+            return RedirectToPage("Login");
         }
     }
 }
